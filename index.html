@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validación Formularios</title>
   <link rel="stylesheet" href="style.css">
-  
+
 </head>
 <body>
   <p>
@@ -25,7 +25,7 @@
         <label for="nombre1">Nombre</label>
       </div>
       <div>
-        <input  id="nombre1" name="nombre" type="text" pattern="[a-z]" >
+        <input  id="nombre1" name="nombre" type="text" pattern="[a-z A-Z]*" minlength="1" maxlength="20">
       </div>
     </div>
     
@@ -40,7 +40,7 @@
         <label for="apellido">apellido</label>
       </div>
       <div>
-        <input  id="apellido" name="apellido" type="text">
+        <input  id="apellido" name="apellido" type="text" pattern="[a-z]*" minlength="1" maxlength="20">
       </div>
     </div>
     
@@ -55,7 +55,7 @@
         <label for="color">Color</label>
       </div>
       <div>
-        <input  id="color" name="color" type="text">
+        <input  id="color" name="color" type="color">
       </div>
     </div>
     
@@ -70,7 +70,7 @@
         <label for="edad">Edad</label>
       </div>
       <div>
-        <input  id="edad" name="edad" type="number">
+        <input  id="edad" name="edad" type="number" pattern="[0-9]" min="0" max="90">
       </div>
     </div>
     
@@ -85,7 +85,7 @@
         <label for="numeros">Números</label>
       </div>
       <div>
-        <input  id="numeros" name="numeros" type="text">
+        <input  id="numeros" name="numeros" type="text" pattern="[0-9]*" minlength="1" maxlength="20">
       </div>
     </div>
     <!-- Validar que el usuario solo pueda ingresar números positivos -->
@@ -100,7 +100,7 @@
         <label for="positivos">Positivos</label>
       </div>
       <div>
-        <input  id="positivos" name="positivos" type="text">
+        <input  id="positivos" name="positivos" type="number" pattern="[0-9] " min="0" max="1000">
       </div>
     </div>
     <!-- El usuario podra incrematar de 0.5 en 0.5 y solo podra incremantar hasta 20, igualmente no podra decrementar menos de 10 y al iniciar el formulario iniciar con 15 -->
@@ -200,8 +200,13 @@
         <label for="materias">Materias</label>
       </div>
       <div>
-        <input  id="materias" name="materias" type="text">
+        <input  id="materias">materias</div>
       </div>
+      <select name="materias" id="materias"></select>
+          <option value="selecciona">Selecciona...</option>
+          <option value="matematicas">matematicas</option>
+          <option value="robotica">robotica</option>
+           <option value="biologia">biologia</option>
     </div>
 
     <!-- El usuario podra seleccionar varias imagenes pero el formato valido es .jpg y .png -->
