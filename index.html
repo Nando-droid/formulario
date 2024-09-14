@@ -5,121 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validación Formularios</title>
   <link rel="stylesheet" href="style.css">
-  <script>
-    window.onload = function() {
-      const nombre = document.getElementById("nombre");
-      const apellido = document.getElementById("apellido");
-      const color = document.getElementById("color");
-      const edad = document.getElementById("edad");
-      const numeros = document.getElementById("numeros");
-      const positivos = document.getElementById("positivos");
-      const maximo_minimo = document.getElementById("maximo_minimo");
-      const fecha_nacimiento = document.getElementById("fecha_nacimiento");
-      const hora = document.getElementById("hora");
-      const ciudad = document.getElementById("ciudad");
-      const genero = document.getElementById("genero");
-      const materias = document.getElementById("materias");
-      const archivos = document.getElementById("archivos");
-      const contrasena = document.getElementById("contrasena");
-      const aprendiz = document.getElementById("aprendiz");
-
-      const especiales = [
-        8, //backspace
-        32, //espacio
-        37, //flecha izquierda
-        39, //flecha derecha
-      ]
-      const esEspecial = (keyCode, excluido) => especiales
-        .filter(e =>!excluido === undefined ? true : e !== excluido)
-        .includes(keyCode);
-      const esMayuscula = (keyCode) => keyCode >=65 && keyCode <= 90;
-      const esMiniscula = (keyCode, shiftKey) => !shiftKey && esMayuscula(keyCode);
-      const esNumero = (keyCode) => keyCode >= 48 && keyCode <= 57;
-
-      const soloLetras = (e) => {
-        const keyCode = e.keyCode;
-        
-        console.log(keyCode);
-        if (esMiniscula(keyCode, e.shiftKey) || 
-          esMayuscula(keyCode) ||
-          esEspecial(keyCode)) {
-          return;
-        } 
-        e.preventDefault();
-      }
-
-      const soloMinisculas = (e) => {
-        const keyCode = e.keyCode 
-         
-        console.log(keyCode);
-        if (esMiniscula(keyCode, e.shiftKey) ||
-          esEspecial(keyCode)) {
-          return;
-        } 
-        e.preventDefault();
-      }
-
-      const soloNumeros = (e) => {
-        const keyCode = e.keyCode 
-         
-        console.log(keyCode);
-        if (esNumero(keyCode) ||
-          esEspecial(keyCode, 32)) {
-          return;
-        } 
-        e.preventDefault();
-      }
-
-      const actualizaMiNombre = () => {
-        aprendiz.value = `${nombre.value} ${apellido.value}`;
-      }
-
-      validarTexto = (nombre, valor) => {
-        if (valor.length === 0) {
-          alert(`Por favor. escribe ${nombre}`);
-          return false;
-        }
-        return true;
-      }
-
-      validarSeleccion = (nombre, seleccion) => {
-        if (seleccion === 0) {
-          alert(`Por favor. elige un ${nombre}`);
-          return false;
-        }
-        return true;
-      }
-
-      const validarCampos = (e) => {
-        e.preventDefault();
-
-        const nombreEsValido = validarTexto('nombre', nombre.value);
-        if (!nombreEsValido){
-          nombre.focus();
-          return false;
-        }
-
-        debugger;
-        const ciudadEsValido = validarSeleccion('ciudad', ciudad.selectedIndex);
-        if (!ciudadEsValido){
-          ciudad.focus();
-          return false;
-        }
-
-
-      }
-
-      nombre.addEventListener("keydown", soloLetras);
-      apellido.addEventListener("keydown", soloMinisculas);
-      numeros.addEventListener("keydown", soloNumeros);
-      nombre.addEventListener("blur", actualizaMiNombre);
-      apellido.addEventListener("blur", actualizaMiNombre);
-      formulario.addEventListener("submit", validarCampos);
-    }
-
-
-
-  </script>
+  
 </head>
 <body>
   <p>
@@ -136,10 +22,10 @@
         <b>Validar Campo que al enviar solo se puedan enviar letras (a - z) tanto minusculas como mayusculas</b>
       </div>
       <div>
-        <label for="nombre">Nombre</label>
+        <label for="nombre1">Nombre</label>
       </div>
       <div>
-        <input  id="nombre" name="nombre" type="text">
+        <input  id="nombre1" name="nombre" type="text" pattern="[a-z]" >
       </div>
     </div>
     
@@ -334,7 +220,7 @@
     </div>
 
 
-    <!-- El usuario podra ingresar su contraseña -->
+    <!---->  
      <hr>
      
      <div>
