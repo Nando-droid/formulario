@@ -30,20 +30,36 @@
         39, //flecha derecha
       ]
       const esEspecial = (keyCode) => especiales.includes(keyCode);
-      const esMiniscula = (keyCode) => keyCode >=65 && keyCode <= 90;
-      const esMayuscula = (keyCode) => keyCode >=97 && keyCode <= 122;
+      const esMayuscula = (keyCode) => keyCode >=65 && keyCode <= 90;
+      const esMiniscula = (keyCode, shiftKey) => !shiftKey && esMayuscula(keyCode);
 
       const soloLetras = (e) => {
-        console.log(e.keyCode);
-        if (!esMiniscula(e.keyCode) && 
-          !esMayuscula(e.keyCode) &&
-          !esEspecial(e.keyCode)) {
-          e.preventDefault();
+        const keyCode = e.keyCode;
+        
+        console.log(keyCode);
+        if (esMiniscula(keyCode, e.shiftKey) || 
+          esMayuscula(keyCode) ||
+          esEspecial(keyCode)) {
           return;
         } 
+        e.preventDefault();
+      }
+
+      const soloMinisculas = (e) => {
+        const keyCode = e.keyCode 
+         
+        console.log(keyCode);
+        if (esMiniscula(keyCode, e.shiftKey) ||
+          esEspecial(keyCode)) {
+          return;
+        } 
+        e.preventDefault();
+
       }
 
       nombre.addEventListener("keydown", soloLetras);
+      apellido.addEventListener("keydown", soloMinisculas);
+
     }
 
 
