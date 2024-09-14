@@ -29,7 +29,7 @@ label {
   text-transform: capitalize;
 }
 
-input {
+input, select {
   height: 35px;
   margin-top: 8px;
   width: 100%;

@@ -29,9 +29,12 @@
         37, //flecha izquierda
         39, //flecha derecha
       ]
-      const esEspecial = (keyCode) => especiales.includes(keyCode);
+      const esEspecial = (keyCode, excluido) => especiales
+        .filter(e =>!excluido === undefined ? true : e !== excluido)
+        .includes(keyCode);
       const esMayuscula = (keyCode) => keyCode >=65 && keyCode <= 90;
       const esMiniscula = (keyCode, shiftKey) => !shiftKey && esMayuscula(keyCode);
+      const esNumero = (keyCode) => keyCode >= 48 && keyCode <= 57;
 
       const soloLetras = (e) => {
         const keyCode = e.keyCode;
@@ -54,13 +57,66 @@
           return;
         } 
         e.preventDefault();
+      }
+
+      const soloNumeros = (e) => {
+        const keyCode = e.keyCode 
+         
+        console.log(keyCode);
+        if (esNumero(keyCode) ||
+          esEspecial(keyCode, 32)) {
+          return;
+        } 
+        e.preventDefault();
+      }
+
+      const actualizaMiNombre = () => {
+        aprendiz.value = `${nombre.value} ${apellido.value}`;
+      }
+
+      validarTexto = (nombre, valor) => {
+        if (valor.length === 0) {
+          alert(`Por favor. escribe ${nombre}`);
+          return false;
+        }
+        return true;
+      }
+
+      validarSeleccion = (nombre, seleccion) => {
+        if (seleccion === 0) {
+          alert(`Por favor. elige un ${nombre}`);
+          return false;
+        }
+        return true;
+      }
+
+      const validarCampos = (e) => {
+        e.preventDefault();
+
+        const nombreEsValido = validarTexto('nombre', nombre.value);
+        if (!nombreEsValido){
+          nombre.focus();
+          return false;
+        }
+
+        debugger;
+        const ciudadEsValido = validarSeleccion('ciudad', ciudad.selectedIndex);
+        if (!ciudadEsValido){
+          ciudad.focus();
+          return false;
+        }
+
 
       }
 
       nombre.addEventListener("keydown", soloLetras);
       apellido.addEventListener("keydown", soloMinisculas);
-
+      numeros.addEventListener("keydown", soloNumeros);
+      nombre.addEventListener("blur", actualizaMiNombre);
+      apellido.addEventListener("blur", actualizaMiNombre);
+      formulario.addEventListener("submit", validarCampos);
     }
+
 
 
   </script>
@@ -73,7 +129,7 @@
     los campos son demostrativos, el aprendiz debe modificar el html para su correcto funcionamiento, es decir modificar los atributos o las mismas etiquetas.
   </p>
   <hr>
-  <form  action="">
+  <form id="formulario" name="formulario" action="">
     <!-- Campo solo letras mayusculas y minusculas -->
     <div>
       <div>
@@ -128,7 +184,7 @@
         <label for="edad">Edad</label>
       </div>
       <div>
-        <input  id="edad" name="edad" type="text">
+        <input  id="edad" name="edad" type="number">
       </div>
     </div>
     
@@ -220,7 +276,12 @@
         <label for="ciudad">Ciudad</label>
       </div>
       <div>
-        <input  id="ciudad" name="ciudad" type="text">
+        <select name="ciudad" id="ciudad">
+          <option value="selecciona">Selecciona...</option>
+          <option value="bogota">Bogot</option>
+          <option value="bucaramanga">Bucaramanga</option>
+         
+        </select>
       </div>
     </div>
 
@@ -268,7 +329,7 @@
         <label for="archivos">Archivos</label>
       </div>
       <div>
-        <input  id="archivos" name="archivos" type="text">
+        <input  id="archivos" name="archivos" type="file" accept=".jpg, .png>
       </div>
     </div>
 
@@ -299,12 +360,12 @@
         <label for="aprendiz">aprendiz</label>
       </div>
       <div>
-        <input  id="aprendiz" name="aprendiz" type="text">
+        <input  id="aprendiz" name="aprendiz" type="text" disabled>
       </div>
     </div>
 
     <div>
-      <button type="button">Validar formulario</button>
+      <button type="submit">Validar formulario</button>
     </div>
     <div>
       <span>
