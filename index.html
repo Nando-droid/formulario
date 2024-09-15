@@ -22,10 +22,10 @@
         <b>Validar Campo que al enviar solo se puedan enviar letras (a - z) tanto minusculas como mayusculas</b>
       </div>
       <div>
-        <label for="nombre1">Nombre</label>
+        <label for="nombre1">Nombre1</label>
       </div>
       <div>
-        <input  id="nombre1" name="nombre" type="text" pattern="[a-z A-Z]*" minlength="1" maxlength="20">
+        <input  id="nombre1" name="nombre1" type="text" pattern="[a-z A-Z]*" minlength="1" maxlength="20">
       </div>
     </div>
     
@@ -116,7 +116,8 @@
         <label for="maximo_minimo">maximo-minimo</label>
       </div>
       <div>
-        <input  id="maximo_minimo" name="maximo_minimo" type="text">
+
+        <input  id="maximo_minimo" name="maximo_minimo" type="number" min="10" max="20" step="0.5" value="15">
       </div>
     </div>
     <!-- El usuario podra seleccionar la fecha de nacimiento -->
@@ -131,7 +132,7 @@
         <label for="fecha_nacimiento">Fecha nacimiento</label>
       </div>
       <div>
-        <input  id="fecha_nacimiento" name="fecha_nacimiento" type="text">
+        <input  id="fecha_nacimiento" name="fecha_nacimiento" type="date">
       </div>
     </div>
     <!-- El usuario podra seleccionar la hora de registro -->
@@ -146,7 +147,7 @@
         <label for="hora">hora</label>
       </div>
       <div>
-        <input  id="hora" name="hora" type="text">
+        <input  id="hora" name="hora" type="time">
       </div>
     </div>
 
@@ -164,82 +165,90 @@
       <div>
         <select name="ciudad" id="ciudad">
           <option value="selecciona">Selecciona...</option>
-          <option value="bogota">Bogot</option>
+          <option value="bogota">Bogota</option>
           <option value="bucaramanga">Bucaramanga</option>
-         
-        </select>
-      </div>
-    </div>
+         <option value="lebrija">lebrija</option>
+         <option value="giron">giron</option>
+         <option value="barrancabermeja">barrancabermeja</option>
+          
 
-    <!-- El usuario podra seleccionar su genero y solo podra selecciona un unico genero (Masculino, Femenino , Otro) -->
-     
-     <hr>
-     
-     <div>
-      <div>
-        <b>El usuario podra seleccionar su genero y solo podra selecciona un unico genero (Masculino, Femenino , Otro)</b>
-      </div>
-      <div>
-        <label for="genero">genero</label>
-      </div>
-      <div>
-        <input  id="genero" name="genero" type="text">
-      </div>
-    </div>
+           </select>
+           </div>
+           </div>
 
-    <!-- El usuario podra seleccionar varias materias, (HTML, CSS, JS, JAVA, PYTHON, PHP) este campo es opcional es decir se debe trasnformar pero no es obligatorio estar seleccionada alguna materia -->
+          <!-- El usuario podra seleccionar su genero y solo podra selecciona un unico genero (Masculino, Femenino , Otro) -->
+           
+            <hr>
+                 
+               <div>
+              <div>
+               <b>El usuario podra seleccionar su genero y solo podra selecciona un unico genero (Masculino, Femenino , Otro)</b>
+               </div>
+                <div>
+              <label for="genero">genero</label>
+               </div>
+              <div>
+              <input  id="genero" name="genero" type="radio" value="hombre">hombre
+             <input  id="genero" name="genero" type="radio" value="mujer">mujer
+              <input  id="genero" name="genero" type="radio" value="otro">otro
+             </div>
+              </div>
+
+                <!-- El usuario podra seleccionar varias materias, (HTML, CSS, JS, JAVA, PYTHON, PHP) este campo es opcional es decir se debe trasnformar pero no es obligatorio estar seleccionada alguna materia -->
      
-     <hr>
+              <hr>
      
-     <div>
+          <div>
       <div>
         <b>El usuario podra seleccionar varias materias, (HTML, CSS, JS, JAVA, PYTHON, PHP) este campo es opcional es decir se
         debe trasnformar pero no es obligatorio estar seleccionada alguna materia</b>
       </div>
       <div>
+      
         <label for="materias">Materias</label>
-      </div>
-      <div>
-        <input  id="materias">materias</div>
-      </div>
-      <select name="materias" id="materias"></select>
-          <option value="selecciona">Selecciona...</option>
-          <option value="matematicas">matematicas</option>
-          <option value="robotica">robotica</option>
-           <option value="biologia">biologia</option>
-    </div>
+       <select name="materias" id="materias">
+      <option value="selecciona">selecciona</option>
+      <option value="HTML">HTML</option>
+      <option value="CSS">CSS</option>
+      <option value="JS">JS</option>
+      <option value="JAVA">JAVA</option>
+      <option value="PYTHON">PYTHON</option>
+      <option value="PHP">PHP</option>
+       </select>
+        </div>
 
-    <!-- El usuario podra seleccionar varias imagenes pero el formato valido es .jpg y .png -->
-     <hr>
+        </div>
      
-     <div>
-      <div>
+        </div>
+        <!-- El usuario podra seleccionar varias imagenes pero el formato valido es .jpg y .png -->
+         <hr>
+       
+        <div>
+        <div>
         <b>El usuario podra seleccionar varias imagenes pero el formato valido es .jpg y .png</b>
       </div>
       <div>
         <label for="archivos">Archivos</label>
       </div>
       <div>
-        <input  id="archivos" name="archivos" type="file" accept=".jpg, .png>
-      </div>
+        <input  id="archivos" name="archivos" type="file" accept=".jpg, .png">
     </div>
+  </div>
+     </div>
 
-
-    <!---->  
+     <!-- el usuario podra ingresar su contraseña -->
      <hr>
-     
-     <div>
+     </div>
       <div>
-        <b>El usuario podra ingresar su contraseña</b>
-      </div>
-      <div>
-        <label for="contrasena">contraseña</label>
+      <b> El usuario podra ingresar su contraseña </b>
+      <label for="contraseña">Contraseña</label>
       </div>
       <div>
         <input  id="contrasena" name="contrasena" type="password">
-      </div>
+      <div>
+    <div>
     </div>
-
+    
     <!-- Campo para que el aprendiz ingrese su nombre, este campo debe ser de solo lectura, es decir debe estar bloqueado, es decir debe estar bloqueado y al iniciar el formulario debe estar lleno con el nombre del aprendiz -->
      <hr>
      
@@ -248,10 +257,10 @@
         <b>Campo para que el aprendiz ingrese su nombre, este campo debe ser de solo lectura, es decir debe estar bloqueado y al iniciar el formulario debe estar lleno con el nombre del aprendiz</b>
       </div>
       <div>
-        <label for="aprendiz">aprendiz</label>
+        <label for="nombre1">aprendiz</label>
       </div>
       <div>
-        <input  id="aprendiz" name="aprendiz" type="text" disabled>
+        <input  id="nombre1" name="nombre1" type="text" value="fernando leon">
       </div>
     </div>
 
